@@ -1,3 +1,5 @@
 import { et } from './et';
-export { et };
-export default { et };
+import { neo } from './neo';
+
+export { et, neo };
+export default { et, neo };
