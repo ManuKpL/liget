@@ -1,4 +1,4 @@
-import { neo } from '@src/neo';
+import { neo } from '../neo';
 import { Musician } from './Musician';
 
 describe('neo()', () => {
