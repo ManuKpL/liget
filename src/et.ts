@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
-import { Functions, Params } from './types';
+import { Functions, FunctionParams } from './types';
 import { unpackArgs } from './unpackArgs';
 
 export function et<TargetObjet extends object, PropName extends keyof TargetObjet>(
   propName: PropName,
   ...params: TargetObjet[PropName] extends Functions.AnyFunction
-    ? Params.AnyParams<TargetObjet[PropName]>
-    : Params.NoParam
+    ? FunctionParams.AnyParams<TargetObjet[PropName]>
+    : FunctionParams.NoParam
 ): (target: TargetObjet) => TargetObjet[PropName] {
   return function handler(target) {
     const value = target[propName];
