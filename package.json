@@ -35,7 +35,7 @@
   },
   "browserslist": "> 0.25%, not dead",
   "engines": {
-    "node": ">= 12.18.0"
+    "node": ">=10"
   },
   "husky": {
     "hooks": {
