@@ -2,15 +2,15 @@ module.exports = {
   rootDir: '.',
   moduleFileExtensions: ['ts', 'js', 'json'],
   transform: {
-    '\\.(j|t)s$': 'babel-jest',
+    '\\.ts$': 'ts-jest',
   },
   testEnvironment: 'node',
-  testRegex: '\\.(test|spec)\\.(j|t)s$',
-  setupFilesAfterEnv: ['./jest.setup.js'],
+  testRegex: '\\.(test|spec)\\.ts$',
+  setupFilesAfterEnv: ['./jest.setup.ts'],
   collectCoverageFrom: [
-    'src/**/*.{js,ts}',
-    '!**/index.{js,ts}',
-    '!**/*.{spec,test,mock}.{js,ts}',
+    'src/**/*.ts',
+    '!**/index.ts',
+    '!**/*.{spec,test,mock}.ts',
     '!**/{__tests__,tests,__mocks__,mocks}/**/*',
   ],
   coverageThreshold: {
