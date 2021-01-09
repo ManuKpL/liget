@@ -1,12 +1,8 @@
-import { ConstructorParams, Constructors } from './types';
+import { Constructors } from './types';
 
-export function neo<ConstructorFunction extends Constructors.AnyConstructor>(
-  Fn: ConstructorFunction,
-): (
-  params: ConstructorFunction extends Constructors.AnyConstructor
-    ? ConstructorParams.AnyParams<ConstructorFunction>
-    : never,
-) => InstanceType<ConstructorFunction> {
+type ParamsHandler<Fn extends Constructors.AnyConstructor> = (params: Constructors.Params<Fn>) => InstanceType<Fn>;
+
+export function neo<Fn extends Constructors.AnyConstructor>(Fn: Fn): ParamsHandler<Fn> {
   return function handler(args) {
     return new Fn(args);
   };
