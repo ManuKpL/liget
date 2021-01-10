@@ -1,7 +1,7 @@
 {
   "name": "liget",
   "description": "Utility projet providing shortcut functions for HOFs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/ManuKpL/liget.git"
