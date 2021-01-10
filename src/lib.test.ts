@@ -1,4 +1,4 @@
-import * as features from './features';
+import * as features from './lib/features';
 
 async function importDefault(feat: string) {
   const module = await import(`./${feat}`);
@@ -6,12 +6,12 @@ async function importDefault(feat: string) {
 }
 
 async function importNamed(feat: string) {
-  const module = await import('./index');
+  const module = await import('./lib');
   return module[feat as keyof typeof module];
 }
 
 async function importLib(feat: string) {
-  const module = await import('./index');
+  const module = await import('./lib');
   return module.default[feat as keyof typeof module.default];
 }
 

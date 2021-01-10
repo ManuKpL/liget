@@ -1,2 +1,2 @@
-import et from './features/et';
+import et from './lib/features/et';
 export default et;

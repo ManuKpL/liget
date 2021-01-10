@@ -1,10 +1,17 @@
 node_modules
 .eslintcache
 
-# output dir of babel
-lib
+# ignore build output
+/lib
+/*.js
+/*.d.ts
+
+# keep config files
+!/*.config.js
+
 # output dirs of jest coverage reports
 coverage
 test-results
+
 # tmp config created for lint-staged & tsc (not correctly removed on lint error)
 tsconfig.lint-staged.json

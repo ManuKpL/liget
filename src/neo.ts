@@ -1,2 +1,2 @@
-import neo from './features/neo';
+import neo from './lib/features/neo';
 export default neo;
