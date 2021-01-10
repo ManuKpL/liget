@@ -1,4 +1,4 @@
-import { Functions } from './types';
+import { Functions } from '../types';
 
 export function unpackArgs<Target>(
   params: Target extends Functions.AnyFunction ? Functions.AnyParams<Target> : Functions.NoParam,
