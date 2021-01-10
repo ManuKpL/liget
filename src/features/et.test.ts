@@ -1,5 +1,5 @@
-import { et } from '../et';
-import { Musician } from './Musician';
+import et from './et';
+import { Musician } from './et.mock';
 
 describe('et', () => {
   test('should be defined', () => {

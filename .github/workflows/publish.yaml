@@ -5,7 +5,29 @@ on:
     branches: [master]
 
 jobs:
+  bump_version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: check last commit for version message
+        shell: bash
+        run: |
+          versionPattern=^[0-9]+\.[0-9]+\.[0-9]+$
+          msg="$(git log -1 --pretty=%B)"
+
+          if [[ ! $msg =~ $versionPattern ]]; then
+            exit 1
+          fi
+          exit 0
+      - name: update patch version
+        if: failure()
+        uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   publish:
+    needs:
+      - bump_version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

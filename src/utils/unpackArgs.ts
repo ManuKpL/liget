@@ -1,7 +1,7 @@
-import { Functions, FunctionParams } from './types';
+import { Functions } from '../types';
 
 export function unpackArgs<Target>(
-  params: Target extends Functions.AnyFunction ? FunctionParams.AnyParams<Target> : FunctionParams.NoParam,
+  params: Target extends Functions.AnyFunction ? Functions.AnyParams<Target> : Functions.NoParam,
 ): unknown[] {
   const [unpackedParams] = params;
 
