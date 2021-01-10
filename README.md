@@ -116,7 +116,7 @@ This function is a shortcut for class instantiation from a list of values. Examp
 ```JS
 documents.map((doc) => new User(doc));
 // vs
-documents.map(neo(UserModel));
+documents.map(neo(User));
 ```
 
 #### Import
@@ -145,4 +145,42 @@ const data = [
 ];
 
 data.map(neo(User));
+```
+
+### `nea()`
+
+This function is a shortcut for class instantiation from a list of entries or arguments array. Example:
+
+```JS
+entries.map((entry) => new User(entry[0], entry[1]));
+// vs
+entries.map(nea(User));
+```
+
+#### Import
+
+```JS
+import nea from 'liget/nea';
+// OR
+import { nea } from 'liget';
+```
+
+#### Behaviour
+
+This function is meant to be used with constructor functions acception 1..n params, whatever type those params may be.
+
+Example:
+
+```JS
+function User(name, login) {
+  this.name = name;
+  this.login = login;
+}
+
+const data = [
+  ['Ada Lovelace', 'a.lovelace'],
+  ['Margaret Hamilton', 'm.hamilton'],
+];
+
+data.map(nea(User));
 ```
