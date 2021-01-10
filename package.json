@@ -11,7 +11,10 @@
     "access": "public"
   },
   "files": [
-    "lib/"
+    "/lib",
+    "/*.js",
+    "/*.d.ts",
+    "!/*.config.js"
   ],
   "keywords": [
     "Higher-Order functions",
@@ -19,7 +22,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build:clean": "rimraf lib",
+    "build:clean": "rimraf ./lib ./*.d.ts \"./!(*.config).js\"",
     "build:compile": "sh scripts/build.sh",
     "build:typecheck": "run-p typecheck:*",
     "build": "run-s build:typecheck build:clean build:compile",
@@ -39,7 +42,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
+      "pre-commit": "lint-staged -c ./lint-staged.config.js",
       "pre-push": "run-s test"
     }
   },
