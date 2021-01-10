@@ -1,4 +1,4 @@
-import { et, neo } from './features';
+import { et, neo, nea } from './features';
 
-export { et, neo };
-export default { et, neo };
+export { et, neo, nea };
+export default { et, neo, nea };
