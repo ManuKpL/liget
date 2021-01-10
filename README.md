@@ -1,6 +1,6 @@
 # Liget
 
-The goal is to provide utils methods to use as shortcuts with functionnal processes such as Higher-Order functions.
+The goal is to provide util methods to use as shortcuts with functionnal processes such as Higher-Order functions.
 
 ## Usage
 
@@ -18,16 +18,33 @@ npm install --save liget
 
 ### Import
 
-```JS
-import liget, { et } from 'liget';
+Import all features at lib level :
 
-const namedExport   = data.map(et('propName'));
-const defaultExport = data.map(liget.et('propName'));
+```JS
+import liget from 'liget';
 ```
 
-## Methods
+## Features
 
 ### `et()`
+
+This function is a shortcut for props & methods on a list of objects. Example:
+
+```JS
+users.map((user) => user.name);
+// vs
+users.map(et('name'));
+```
+
+#### Import
+
+```JS
+import et from 'liget/et';
+// OR
+import { et } from 'liget';
+```
+
+#### Behaviour
 
 Given an array of objects such as
 
@@ -51,26 +68,22 @@ const users = [
 
 ```
 
-#### Property accessor
+#### Property access
 
 The `et()` function takes the name of the property as argument and returns its value.
 
 ```JS
-import { et } from 'liget';
-
 const firstNames = users.map(et('firstName'));
 
 console.log(firstNames);
 // ['Ada']
 ```
 
-#### Method accessor
+#### Method invocation
 
 When the targeted method takes no parameter, the `et()` function takes the name of the method as its single argument.
 
 ```JS
-import { et } from 'liget';
-
 const names = users.map(et('name'));
 
 console.log(names);
@@ -80,8 +93,6 @@ console.log(names);
 When the targeted method takes a single parameter, the `et()` function takes the name of the method as its first argument and the parameter value as its second argument, either directly or wrapped in an array\*.
 
 ```JS
-import { et } from 'liget';
-
 users.forEach(et('greet', 'Margaret Hamilton'));
 // "Hello Margaret Hamilton, I'm Ada Lovelace"
 
@@ -94,8 +105,44 @@ users.forEach(et('greet', ['Grace Hopper']));
 When the targeted method takes at least two parameters, the `et()` function takes the name of the method as its first argument and an array of parmater values as its second argument.
 
 ```JS
-import { et } from 'liget';
-
 users.forEach(et('introduce', ['Margaret Hamilton', 'Grace Hopper']));
 // "Hello Margaret Hamilton, I'm Ada Lovelace and this is Grace Hopper"
+```
+
+### `neo()`
+
+This function is a shortcut for class instantiation from a list of values. Example:
+
+```JS
+documents.map((doc) => new User(doc));
+// vs
+documents.map(neo(UserModel));
+```
+
+#### Import
+
+```JS
+import neo from 'liget/neo';
+// OR
+import { neo } from 'liget';
+```
+
+#### Behaviour
+
+This function is meant to be used with single param constructor functions only, whatever type that param may be.
+
+Example:
+
+```JS
+function User({ name, login }) {
+  this.name = name;
+  this.login = login;
+}
+
+const data = [
+  { name: 'Ada Lovelace', login: 'a.lovelace' },
+  { name: 'Margaret Hamilton', login: 'm.hamilton' },
+];
+
+data.map(neo(User));
 ```
